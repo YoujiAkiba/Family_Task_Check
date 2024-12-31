@@ -1,0 +1,172 @@
+/* ベーススタイルとフォント設定 */
+body, html {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+
+
+/* メインコンテンツのスタイル設定 */
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #E0E1D7; /* 薄い黄色 */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+/* セクションごとのスタイル */
+section {
+    flex: 1;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    min-width: 250px;
+    max-width: 33%;
+}
+
+/* リストスタイルの設定 */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* リストアイテムのスタイル */
+li {
+    background: white;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* チェックボックススタイル */
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* タイトルのカラースタイル */
+h2 {
+    color: #333;
+}
+
+/* スマートフォン向けのメディアクエリ */
+@media (max-width: 600px) {
+    main {
+        flex-direction: column;
+    }
+
+    section {
+        min-width: auto;
+        max-width: 100%;
+        margin: 10px 5px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    header, footer {
+        padding: 5px 10px; /* パディングをスマートフォン向けに調整 */
+    }
+}
+
+header, footer {
+    background: #0093DF; /* 青色 */
+    color: white;
+    text-align: center;
+    padding: 5px 20px; /* 縦のパディングを調整 */
+    height: 50px; /* 高さを設定 */
+    display: flex; /* フレックスボックスを有効化 */
+    align-items: center; /* 垂直方向の中央揃え */
+    justify-content: center; /* 水平方向の中央揃え */
+}
+
+/* ヘッダーとフッター内のテキストサイズを調整 */
+h2, p {
+    margin: 0; /* マージンを0に設定 */
+}
+
+/* チェックされたタスクに線を引く */
+.completed {
+  text-decoration: line-through;
+}
+
+/* チェックされたタスクのスタイル */
+.checked-item {
+    background-color: #333; /* グレーの背景色 */
+}
+
+.checked-label {
+    color: #ffffff; /* Example: tomato color when checked */
+}
+
+.task-section p {
+    text-align: center; /* テキストを中央揃えにする */
+}
+
+.task-section {
+    text-align: center; /* すべての子要素を中央に揃える */
+}
+
+.task-section {
+    padding-left: 10px;  /* 左のパディング */
+    padding-right: 10px; /* 右のパディング */
+}
+
+.image-wrapper {
+    position: relative; /* 子要素をこの要素内で相対配置 */
+    display: inline-block; /* 画像サイズに合わせる */
+}
+
+#completion-rate,
+#completion-rate-mama,
+#completion-rate-papa {
+    position: absolute; /* 親要素を基準に配置 */
+    top: 85%; /* 画像の中央位置に */
+    left: 50%; /* 水平方向の中央位置に */
+    transform: translate(-50%, -50%); /* 中央揃え補正 */
+    background-color: rgba(0, 0, 0, 0); /* 背景を半透明の黒に設定 */
+    color: white; /* テキスト色を白に設定 */
+    padding: 10px 15px; /* 内側の余白を設定 */
+    border-radius: 2px; /* 角を丸める */
+    font-weight: bold; /* 太字に設定 */
+    font-size: 1.2em; /* 適切なサイズに調整 */
+    text-align: center; /* テキストを中央揃え */
+}
+
+
+.task-section {
+    background-color: #f0f8ff; /* 背景色を薄い青に設定 */
+    padding: 20px; /* 内側の余白を調整 */
+    border-radius: 5px; /* 角を丸める */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 軽い影を追加 */
+}
+
+li {
+    text-align: left; /* テキストを左揃え */
+    display: flex; /* フレックスボックスを使うことで配置を簡単に調整可能 */
+    align-items: center; /* チェックボックスとラベルを垂直方向に中央揃え */
+}
+
+.task-checkbox {
+    margin-right: 10px; /* チェックボックスとラベルの間に余白を追加 */
+}
+
+.completed {
+    text-decoration: line-through; /* 取り消し線を適用 */
+    text-decoration-color: red; /* 線の色を赤に設定 */
+    color: white; /* テキストの色を変更（必要なら） */
+}
+
+li {
+    margin-bottom: 10px; /* リストアイテム間のスペース */
+    text-align: center; /* リスト内のテキストを中央揃え */
+}
