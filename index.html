@@ -6,19 +6,25 @@
     <title>family task</title>
     <link rel="stylesheet" href="assets2/css/main.css"> <!-- Linking compiled CSS -->
 </head>
+	
 <body>
 <header>
     <h3 id="current-date">真白、ママ、パパの</h3>
 </header>
 
+
 <main>
 <section id="tasks-mashiro" class="task-section">
+
 <div class="image-wrapper">
 	<p id="prev-completion-rate-mashiro" class="prev-rate">前日の達成率: データなし</p><br>
     <p id="completion-rate">達成率: 0%</p>
     <img id="progress-image" src="assets2/img/mashiro0.png" alt="ましろの画像" class="padded-image">
 </div>
+
+	
 <ul>
+	
 <li>
   <input type="checkbox" id="mashiro-1" class="task-checkbox">
   <label for="mashiro-1">英単語の記憶</label>
@@ -148,18 +154,23 @@
 
 </main>
 
-<footer>
-    <p>習慣になるように頑張ろうね！</p>
-</footer>
+
+
+    <footer>
+        <p>習慣になるように頑張ろうね！</p>
+    </footer>
 	
 <audio id="taskCompleteSound" src="assets2/se/ok1.mp3"></audio>
 
-<!-- Firebase SDKを利用した設定スクリプト -->
+	<!-- Firebase SDKを利用した設定スクリプト -->
 <script type="module">
+  // Firebase SDKをインポート
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
   import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+
+  // Firebase設定
   const firebaseConfig = {
-    apiKey: "AIzaSy...",
+    apiKey: "AIzaSyDL2woendmFizBS1B9l0S9fzg4I7fntuyw",
     authDomain: "familytaskapp-a2b84.firebaseapp.com",
     databaseURL: "https://familytaskapp-a2b84-default-rtdb.firebaseio.com",
     projectId: "familytaskapp-a2b84",
@@ -167,9 +178,37 @@
     messagingSenderId: "583031757451",
     appId: "1:583031757451:web:9658adf43f4fdceb3a528e"
   };
+	
+  // Firebaseの初期化
   const app = initializeApp(firebaseConfig);
   const database = getDatabase(app);
+	
+
+   // ページが読み込まれたら実行
+  document.addEventListener('DOMContentLoaded', function () {
+    const checkboxes = document.querySelectorAll('.task-checkbox');
+    checkboxes.forEach(checkbox => {
+      const taskRef = ref(database, 'tasks/' + checkbox.id);
+
+      // データベースの値をリアルタイムに監視して、UIに反映
+      onValue(taskRef, (snapshot) => {
+        const value = snapshot.val();
+        if (value !== null) {
+          checkbox.checked = value.checked;
+        }
+      });
+
+      // チェックボックスの変更をデータベースに保存
+      checkbox.addEventListener('change', () => {
+        set(taskRef, { checked: checkbox.checked });
+      });
+    });
+  });
 </script>
-<script src="assets2/js/main.js"></script>
+
+<!-- メインスクリプト -->
+	
+	
+    <script src="assets2/js/main.js"></script> <!-- Linking JavaScript -->
 </body>
 </html>
